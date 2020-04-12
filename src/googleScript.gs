@@ -24,15 +24,17 @@ function doGet(e) {
     result = 'No Parameters';
   }
   else {
-    var sheet_id = ''; 		// Spreadsheet ID (FILL IN YOUR SPREADSHEET_ID HERE!)
+    var sheet_id = '1Vyy4qgzp645pBN_VU812eClJVZJIYqi_M7j1ywWp0Tw'; 		// Spreadsheet ID
     var sheet = SpreadsheetApp.openById(sheet_id).getActiveSheet();		// get Active sheet
     var newRow = sheet.getLastRow() + 1;						
     var rowData = [];
     date = new Date();
-    rowData[0] = date; 											// Timestamp in column A
+    rowData[0] = date; // Timestamp in column A
     for (var param in e.parameter) {
       Logger.log('In for loop, param=' + param);
       var value = stripQuotes(e.parameter[param]);
+      value = replaceDotByComma(value); // google spreadsheet separates floats by comma
+
       Logger.log(param + ':' + e.parameter[param]);
       switch (param) {
         case 'temperature': //Parameter
@@ -62,6 +64,10 @@ function doGet(e) {
 */
 function stripQuotes( value ) {
   return value.replace(/^["']|['"]$/g, "");
+}
+
+function replaceDotByComma(value) {
+  return value.replace(/[.]/g, ",");
 }
 /**
 //-----------------------------------------------
