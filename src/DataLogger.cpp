@@ -9,9 +9,15 @@ bool DataLogger::init() {
     Serial.println(ssid);
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
+    int ms_waited = 0;
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
         Serial.print(".");
+        ms_waited += 500;
+        if(ms_waited >= 5000) {
+            // doesnt work, attempt again from the start
+            return false;
+        }
     }
     Serial.println("");
     Serial.println("WiFi connected");

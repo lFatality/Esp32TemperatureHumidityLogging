@@ -28,12 +28,17 @@ void setup()
     Serial.begin(115200);
     Serial.println();
     Serial.println("In Project: Esp32TemperatureHumidityLogging");
+    Serial.println("Starting setup");
 
     // initialize temperature & humidity sensor
     si7021Driver.begin();  // sensor
 
     //connecting to the local wlan / internet
-    dataLogger.init();
+    while(!dataLogger.init()) {
+        Serial.println("Connecting to Wifi failed, attempting again");
+    };
+
+    Serial.println("Setup completed");
 }
 
 void loop() 
