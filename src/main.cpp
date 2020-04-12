@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 // spreadsheet: spreadsheet: https://docs.google.com/spreadsheets/d/1Vyy4qgzp645pBN_VU812eClJVZJIYqi_M7j1ywWp0Tw/edit#gid=0
-// google script: https://script.google.com/macros/s/AKfycbxh0KWfIYso5BDSDKgFchY8PHbHADLUEGQ_YH0rbknq3a9M5w/exec?temperature=20&humidity=48
+// execute google script: https://script.google.com/macros/s/AKfycbxh0KWfIYso5BDSDKgFchY8PHbHADLUEGQ_YH0rbknq3a9M5w/exec?temperature=20&humidity=48
 
 //-----------------------------------------------
 // Author: Trieu Le
@@ -19,8 +19,8 @@
 DataLogger dataLogger;
 AdafruitSi7021Driver si7021Driver(&Wire);
 
-int it = 0;
-int ih = 0;
+float it = 0;
+float ih = 0;
 
 void setup() 
 {
@@ -38,14 +38,14 @@ void setup()
 
 void loop() 
 {
-    int h = si7021Driver.readHumidity();
-    int t = si7021Driver.readTemperature();
+    float h = si7021Driver.readHumidity();
+    float t = si7021Driver.readTemperature();
     Serial.print("Temp = ");
     Serial.print(t);
     Serial.print(" HUM= ");
     Serial.println(h);
-    it = (int) t;
-    ih = (int) h;
+    it = (float) t;
+    ih = (float) h;
     dataLogger.sendDataToGoogleSpreadsheet(it, ih);
 
     delay(5000);

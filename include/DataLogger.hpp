@@ -23,7 +23,7 @@ public:
      * @param temperature
      * @param humidity
      */
-    bool sendDataToGoogleSpreadsheet(int temperature, int humidity);
+    bool sendDataToGoogleSpreadsheet(float temperature, float humidity);
 
 const char* st = "hello";
 const char* st2 = st;

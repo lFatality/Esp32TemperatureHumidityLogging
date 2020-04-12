@@ -10,8 +10,8 @@ bool DataLogger::init() {
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
     while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
+        delay(500);
+        Serial.print(".");
     }
     Serial.println("");
     Serial.println("WiFi connected");
@@ -21,7 +21,7 @@ bool DataLogger::init() {
     return true;
 }
 
-bool DataLogger::sendDataToGoogleSpreadsheet(int temperature, int humidity)
+bool DataLogger::sendDataToGoogleSpreadsheet(float temperature, float humidity)
 {
     client.flush();
     Serial.print("connecting to ");
@@ -34,7 +34,7 @@ bool DataLogger::sendDataToGoogleSpreadsheet(int temperature, int humidity)
     if (client.verify(fingerprint, host)) {
         Serial.println("certificate matches");
     } else {
-        Serial.println("certificate doesn't match");
+        Serial.println("certificate doesn't match (should be fine, worked even with this error)");
     }
     String string_temperature =  String(temperature, DEC); 
     String string_humidity =  String(humidity, DEC); 
