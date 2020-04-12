@@ -20,7 +20,8 @@
 function doGet(e) { 
   Logger.log( JSON.stringify(e) );  // view parameters
   var result = 'Ok'; // assume success
-  if (e.parameter == 'undefined') {
+  
+  if (Object.keys(e.parameters).length == 0) { // care: not supported by Internet Explorer 8
     result = 'No Parameters';
   }
   else {
@@ -39,11 +40,9 @@ function doGet(e) {
       switch (param) {
         case 'temperature': //Parameter
           rowData[1] = value; //Value in column B
-          result = 'Written on column B';
           break;
         case 'humidity': //Parameter
           rowData[2] = value; //Value in column C
-          result += ' ,Written on column C';
           break;  
         default:
           result = "unsupported parameter";
