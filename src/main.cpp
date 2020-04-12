@@ -12,45 +12,15 @@
 // update ssid, password and GAS_ID
 //-----------------------------------------------
 
-//#include<DHT.h>
+#include "AdafruitSi7021Driver.hpp"
 #include "DataLogger.hpp"
+#include "Wire.h" // i2c
 
 DataLogger dataLogger;
-
-#define D2 1
-#define DHT11 2
-
-#define DHTPIN D2
-#define DHTTYPE DHT11
+AdafruitSi7021Driver si7021Driver(&Wire);
 
 int it = 0;
 int ih = 0;
-
-class DHT {
-public:
-    DHT(uint8_t pin, uint8_t type) {};
-
-    void begin() {
-
-    }
-
-    int readTemperature() {
-    static int val = 0.0;
-    val = val+1;
-    return val;
-    }
-
-    int readHumidity() {
-    static int val = 0.0;
-    val = val+2;
-    return val;
-    }  
-
-};
-
-void sendData(int tem, int hum);
-
-DHT dht(DHTPIN, DHTTYPE);
 
 void setup() 
 {
@@ -60,7 +30,7 @@ void setup()
     Serial.println("In Project: Esp32TemperatureHumidityLogging");
 
     // initialize temperature & humidity sensor
-    dht.begin();  // sensor
+    si7021Driver.begin();  // sensor
 
     //connecting to the local wlan / internet
     dataLogger.init();
@@ -68,9 +38,8 @@ void setup()
 
 void loop() 
 {
-    
-    int h = dht.readHumidity();
-    int t = dht.readTemperature();
+    int h = si7021Driver.readHumidity();
+    int t = si7021Driver.readTemperature();
     Serial.print("Temp = ");
     Serial.print(t);
     Serial.print(" HUM= ");
