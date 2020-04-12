@@ -1,0 +1,21 @@
+Logging Temperature & Humidity and logging it in a Google spreadsheet in the cloud
+==================================================================================
+
+Boards used:
+* Adafruit Si7021
+* ESP32 TTGO T8 v1.7.1
+
+Useful video:
+https://www.youtube.com/watch?v=fS0GeaOkNRw
+
+The code and the google script were adjusted but this is the general idea.
+
+Good information about sensor (also check other subpages):
+https://learn.adafruit.com/adafruit-si7021-temperature-plus-humidity-sensor/overview
+
+i2C pins on the esp:
+* SDA = 21
+* SCL = 22
+
+Connect 5V of the ESP to the Vin of the Si7021.
+The 3V pin is an output pin (up to 100mA).
