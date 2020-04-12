@@ -38,7 +38,7 @@ bool DataLogger::sendDataToGoogleSpreadsheet(int temperature, int humidity)
     }
     String string_temperature =  String(temperature, DEC); 
     String string_humidity =  String(humidity, DEC); 
-    String url = "/macros/s/" + env::gas::id + "/exec?temperature=" + string_temperature + "&humidity=" + string_humidity;
+    String url = "/macros/s/" + gasId + "/exec?temperature=" + string_temperature + "&humidity=" + string_humidity;
     Serial.print("requesting URL: ");
     Serial.println(url);
 

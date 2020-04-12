@@ -37,7 +37,7 @@ private:
     WiFiClientSecure client;
     // SHA1 fingerprint of the certificate, don't care with your GAS service
     const char* fingerprint = "46 B2 C3 44 9C 59 09 8B 01 B6 F9 BD 4C FB 00 74 91 2F EF F6";
-    //String GAS_ID = env::gas::id; //env::gas::id; 	// Replace by your GAS service id           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    String gasId = env::gas::id; //env::gas::id; 	// Replace by your GAS service id           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     int it;
     int ih;
 };

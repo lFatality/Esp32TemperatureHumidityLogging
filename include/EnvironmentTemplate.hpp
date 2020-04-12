@@ -10,7 +10,7 @@ namespace env {
 
     // gas = Google Apps Script
     namespace gas {
-        const String id = "";
+        const char* const id = "";
     }
     
 }
