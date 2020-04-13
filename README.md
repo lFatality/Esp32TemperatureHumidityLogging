@@ -34,18 +34,18 @@ https://www.youtube.com/watch?v=qbETf0c3jZM
 Create google spreadsheet
 ---------------------------
 
-There is a script here called googleScripts.gs
-It was adjusted from this video:
+There is a script here called googleScripts.gs  
+It was adjusted from this video:  
 https://www.youtube.com/watch?v=fS0GeaOkNRw
 
-Follow the instructions in the video to see how to set it up.
+Follow the instructions in the video to see how to set it up.  
 Note: If you want to update the script, I always had to select a new version, otherwise nothing happened.
 
 Set up Environment.hpp
 ----------------------
 
-Take EnvironmentTemplate.hpp and rename it to Environment.hpp.
-Fill in the missing values:
+Take EnvironmentTemplate.hpp and rename it to Environment.hpp.  
+Fill in the missing values:  
 - wifi ssid
 - wifi password
 - google app service id
@@ -53,17 +53,17 @@ Fill in the missing values:
 That should be everything, have fun. :)
 
 <img src="ESP32_T8_1_7.jpg" alt="drawing"/>
-Source: https://github.com/LilyGO/TTGO-T8-ESP32
+Image Source: https://github.com/LilyGO/TTGO-T8-ESP32
 
-What is humidity exactly again?
+What is humidity again exactly?
 ===============================
 
-Humidity is a measure of how much water is within the air in gaseous form (steam).
+Humidity is a measure of how much water is within the air in gaseous form (steam).  
 There is relative and absolute humidity.
 
 Relative humidity
 -----------------
-Depending on pressure and temperature the air can store more or less water before it's saturated.
+Depending on pressure and temperature the air can store more or less water before it's saturated.  
 Cold air can store less water. The relative humidity measures how much percent of the maximum amount
 of water is stored in the air. 
 
@@ -77,11 +77,11 @@ When the air gets colder it can hold less water. As the water content doesn't ch
 
 Absolute humidity
 -----------------
-The absolute humidity measures how much water is in the air in absolute values.
-It is measured in g/m^3. In the example above, the relative humidity changed due to temperature changes.
-The amount of water stayed the same though. And this is what the absolute humidity would tell you.
-In both cases the absolute humidity stays the same. Note that the absolute humidity would not be 1 liter.
-First of all it is measured as a weight (and not liter, 1l ≈ 1kg) and secondly, it is measured by m^3.
+The absolute humidity measures how much water is in the air in absolute values.  
+It is measured in g/m^3. In the example above, the relative humidity changed due to temperature changes.  
+The amount of water stayed the same though. And this is what the absolute humidity would tell you.  
+In both cases the absolute humidity stays the same. Note that the absolute humidity would not be 1 liter.  
+First of all it is measured as a weight (and not liter, 1l ≈ 1kg) and secondly, it is measured by m^3.  
 So you need to take the steam weight in the whole room and divide by the m^3 of the room to get the absolute humidity.
 
 How much steam can air take?
@@ -91,21 +91,21 @@ How much steam can air take?
 10°C: 9.4g/m^3  
 30°C: 30.3g/m^3
 
-As the air gets warmer, it can store a lot more water.
+As the air gets warmer, it can store a lot more water.  
 This is the reason why there is more rain when it's warm.
 
 In the following image you can see the curves how the maximum water storage capacity of the air changes with temperature.
 
 <img src="humidity.png" alt="drawing"/>
-Source: https://wiki.unece.org/display/TransportSustainableCTUCode/2%09Definitions
+Image Source: https://wiki.unece.org/display/TransportSustainableCTUCode/2%09Definitions
 
 What do we measure with our sensor?
 -----------------------------------
 The sensor (Si7021) measures relative humidity (RH). It has ± 3% relative humidity measurements with a range of 0–80% RH.  
-As the sensor also measures temperature, you can calculate the absolute humidity from the relative humidity.
+As the sensor also measures temperature, you can calculate the absolute humidity from the relative humidity.  
 For that you need the data from the diagram. You can see for example that at 30°C and 50% RH, the absolute humidity is 15g/m^3.
 
-Temperature Excourse
+Temperature Excourse  
 ±0.4 °C temperature accuracy at a range of -10 to +85 °C. 
 
 Why is the air more dry in the winter?
