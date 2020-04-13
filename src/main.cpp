@@ -64,8 +64,8 @@ void loop()
     // check if it's time to sleep
     Serial.println("Check if it's time to sleep");
     Serial.println(String("Seconds since boot: ") + String(secondsSinceBoot));
-    if(parameters::desiredUpTimeInSeconds > 0 && secondsSinceBoot >= parameters::desiredUpTimeInSeconds) {
-        if(parameters::sleepTimeInSeconds >= 0) {
+    if(secondsSinceBoot >= parameters::desiredUpTimeInSeconds) {
+        if(parameters::sleepTimeInSeconds > 0) {
             Serial.println(String("Going to sleep for ") + String(parameters::sleepTimeInSeconds) + String(" seconds"));
             sleepController.sleep(parameters::sleepTimeInSeconds);
             // next call will be setup()
