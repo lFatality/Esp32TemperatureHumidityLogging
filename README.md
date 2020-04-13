@@ -16,9 +16,11 @@ How to use
 Connect Si7021 to ESP32
 -----------------------
 
-i2C pins on the esp:
-* SDA = 21
-* SCL = 22
+The usual i2C pins have been switched to other pins to be able to control the LED.
+
+The i2C pins on the esp have been set to:
+* SDA = 23
+* SCL = 18
 
 Connect 5V of the ESP to the Vin of the Si7021.
 The 3V pin is an output pin (up to 100mA).
@@ -49,6 +51,9 @@ Fill in the missing values:
 - google app service id
 
 That should be everything, have fun. :)
+
+<img src="ESP32_T8_1_7.jpg" alt="drawing"/>
+Source: https://github.com/LilyGO/TTGO-T8-ESP32
 
 What is humidity exactly again?
 ===============================
