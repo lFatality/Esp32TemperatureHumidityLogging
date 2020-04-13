@@ -1,10 +1,13 @@
 #include "SleepController.hpp"
+#include "LedController.hpp"
 
 #define uS_TO_S_FACTOR 1000000ULL  /* Conversion factor for micro seconds to seconds */
 
 RTC_DATA_ATTR int bootCount = 0; ///< how often the device was booted (initial + woken up)
 
-void SleepController::sleep(int sleepTimeInSeconds) {    
+void SleepController::sleep(int sleepTimeInSeconds) {
+    // shut off LEDs
+    LedController::setLed(ledEnum::all, false);
     // enable timer for sleep
     esp_sleep_enable_timer_wakeup(sleepTimeInSeconds * uS_TO_S_FACTOR);
 

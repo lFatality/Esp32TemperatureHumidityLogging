@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 // spreadsheet: spreadsheet: https://docs.google.com/spreadsheets/d/1Vyy4qgzp645pBN_VU812eClJVZJIYqi_M7j1ywWp0Tw/edit#gid=0
 // execute google script: https://script.google.com/macros/s/AKfycbxh0KWfIYso5BDSDKgFchY8PHbHADLUEGQ_YH0rbknq3a9M5w/exec?temperature=20&humidity=48
 
@@ -12,11 +10,13 @@
 // update ssid, password and GAS_ID
 //-----------------------------------------------
 
+#include <Arduino.h>
 #include "AdafruitSi7021Driver.hpp"
 #include "DataLogger.hpp"
 #include "SleepController.hpp"
 #include "Wire.h" // i2c
 #include "Parameters.hpp"
+#include "LedController.hpp"
 
 DataLogger dataLogger;
 AdafruitSi7021Driver si7021Driver(&Wire);
@@ -44,7 +44,13 @@ void setup()
         Serial.println("Connecting to Wifi failed, attempting again");
     };
 
+    // set up Led pins
+    LedController::init();
+
     Serial.println("Setup completed");
+
+    // toggle LED shortly
+    LedController::blinkLed(ledEnum::green, 3, 50, 50);
 }
 
 void loop() 
