@@ -50,11 +50,6 @@ Fill in the missing values:
 - wifi password
 - google app service id
 
-That should be everything, have fun. :)
-
-<img src="ESP32_T8_1_7.jpg" alt="drawing"/>
-Image Source: https://github.com/LilyGO/TTGO-T8-ESP32
-
 Set up desired up- / down-time and sampling rate
 ------------------------------------------------
 
@@ -64,6 +59,11 @@ In the `Parameters.hpp` file you can set up these three values:
 - Sampling Rate: How often to sample measurements when awake
 - Up time: For how long is the board awake between sleeping periods
 - Sleep time: For how long to sleep. No measurements will be done when sleeping but power is saved.
+
+That should be everything, have fun. :)
+
+<img src="ESP32_T8_1_7.jpg" alt="drawing"/>
+Image Source: https://github.com/LilyGO/TTGO-T8-ESP32
 
 What is humidity again exactly?
 ===============================
