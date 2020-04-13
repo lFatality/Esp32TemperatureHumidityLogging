@@ -14,18 +14,22 @@
 
 #include "AdafruitSi7021Driver.hpp"
 #include "DataLogger.hpp"
+#include "SleepController.hpp"
 #include "Wire.h" // i2c
 
 DataLogger dataLogger;
 AdafruitSi7021Driver si7021Driver(&Wire);
+SleepController sleepController;
 
 float it = 0;
 float ih = 0;
+int msSinceBoot = 0;
 
 void setup() 
 {
     // initialize serial output
     Serial.begin(115200);
+    sleepController.analyzeBoot();
     Serial.println();
     Serial.println("In Project: Esp32TemperatureHumidityLogging");
     Serial.println("Starting setup");
@@ -54,4 +58,10 @@ void loop()
     dataLogger.sendDataToGoogleSpreadsheet(it, ih);
 
     delay(5000);
+    msSinceBoot += 5000;
+    // sample values for 30s, then go into deep sleep for 1 minute
+    if(msSinceBoot >= 30000) {
+        sleepController.sleep(60);
+        // next call will be setup()
+    }
 }
