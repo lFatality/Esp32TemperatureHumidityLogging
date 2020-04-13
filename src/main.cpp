@@ -16,6 +16,7 @@
 #include "DataLogger.hpp"
 #include "SleepController.hpp"
 #include "Wire.h" // i2c
+#include "Parameters.hpp"
 
 DataLogger dataLogger;
 AdafruitSi7021Driver si7021Driver(&Wire);
@@ -23,14 +24,15 @@ SleepController sleepController;
 
 float it = 0;
 float ih = 0;
-int msSinceBoot = 0;
+int secondsSinceBoot = 0;
 
 void setup() 
 {
     // initialize serial output
     Serial.begin(115200);
-    sleepController.analyzeBoot();
     Serial.println();
+    Serial.println("Booted / Woken up");
+    sleepController.analyzeBoot();
     Serial.println("In Project: Esp32TemperatureHumidityLogging");
     Serial.println("Starting setup");
 
@@ -47,6 +49,8 @@ void setup()
 
 void loop() 
 {
+    // sample values
+    Serial.println("Sampling values");
     float h = si7021Driver.readHumidity();
     float t = si7021Driver.readTemperature();
     Serial.print("Temp = ");
@@ -57,11 +61,21 @@ void loop()
     ih = (float) h;
     dataLogger.sendDataToGoogleSpreadsheet(it, ih);
 
-    delay(5000);
-    msSinceBoot += 5000;
-    // sample values for 30s, then go into deep sleep for 1 minute
-    if(msSinceBoot >= 30000) {
-        sleepController.sleep(60);
-        // next call will be setup()
+    // check if it's time to sleep
+    Serial.println("Check if it's time to sleep");
+    Serial.println(String("Seconds since boot: ") + String(secondsSinceBoot));
+    if(parameters::desiredUpTimeInSeconds > 0 && secondsSinceBoot >= parameters::desiredUpTimeInSeconds) {
+        if(parameters::sleepTimeInSeconds >= 0) {
+            Serial.println(String("Going to sleep for ") + String(parameters::sleepTimeInSeconds) + String(" seconds"));
+            sleepController.sleep(parameters::sleepTimeInSeconds);
+            // next call will be setup()
+        }
     }
+
+    // wait sample time
+    Serial.println(String("Waiting sampling time of ") +
+                   String(parameters::samplingPeriodInSeconds) +
+                   String(" seconds"));
+    delay(parameters::samplingPeriodInSeconds * SECONDS_TO_MS);
+    secondsSinceBoot += parameters::samplingPeriodInSeconds;
 }

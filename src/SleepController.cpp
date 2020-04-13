@@ -36,7 +36,7 @@ void SleepController::sleep(int sleepTimeInSeconds) {
 void SleepController::analyzeBoot() {
     ++bootCount;
     print_wakeup_reason();
-    Serial.println("boot count (initial + woken up): " + String(bootCount));
+    Serial.println("Boot count (initial + woken up): " + String(bootCount));
 }
 
 // void SleepController::attachCallback(std::function<void(void*)> callback) {
