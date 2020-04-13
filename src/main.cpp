@@ -51,7 +51,7 @@ void loop()
 {
     // sample values
     Serial.println("Sampling values");
-    float h = si7021Driver.readHumidity();
+    float h = si7021Driver.readRelativeHumidity();
     float t = si7021Driver.readTemperature();
     Serial.print("Temp = ");
     Serial.print(t);

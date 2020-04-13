@@ -72,10 +72,17 @@ public:
   AdafruitSi7021Driver(TwoWire *theWire = &Wire);
   bool begin();
 
+  /**
+   * Reads the temperature value measured by the sensor (°C).
+   */
   float readTemperature();
   void reset();
   void readSerialNumber();
-  float readHumidity();
+
+  /**
+   * Reads the relative humidity value measured by the sensor (%).
+   */
+  float readRelativeHumidity();
 
   /*!
    *  @brief  Returns sensor revision established during init

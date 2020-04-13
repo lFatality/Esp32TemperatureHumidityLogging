@@ -14,16 +14,31 @@ class DataLogger {
 public:
     DataLogger() = default;
 
+    /**
+     * @brief Initializes the data logger by connecting to the local wifi.
+     */
     bool init();
 
     /**
-     * Transmits data to the previously defined Google Spreadsheet.
+     * @brief Transmits data to the previously defined Google Spreadsheet.
+     * 
      * The time of the transfer is automatically logged (date & time).
      * 
      * @param temperature
      * @param humidity
      */
     bool sendDataToGoogleSpreadsheet(float temperature, float humidity);
+
+    /**
+     * @brief Converts a relative humidity (RH) value to absolute humidity.
+     * 
+     * Formula taken from here: https://carnotcycle.wordpress.com/2012/08/04/how-to-convert-relative-humidity-to-absolute-humidity/
+     * @note The formula is accurate within 0.1% for values between -30°C and +35°C.
+     * 
+     * @param relativeHumidity Measured RH value
+     * @param temperature Temperature (°C) that was measured when the RH value was taken
+     */
+    float convertToAbsoluteHumidity(float relativeHumidity, float temperature);
 
 private:
     const char* ssid = env::wifi::ssid; ///< name of your wifi network

@@ -1,4 +1,5 @@
 #include "DataLogger.hpp"
+#include "Arduino.h"
 
 bool DataLogger::init() {
     Serial.print("connecting to ");
@@ -62,7 +63,7 @@ bool DataLogger::sendDataToGoogleSpreadsheet(float temperature, float humidity)
         Serial.println("esp32/Arduino CI successfull!");
     } else {
         Serial.println(line);
-        Serial.println("esp32/Arduino CI has failed");
+        Serial.println("esp32/Arduino CI has failed (probably caused by wrong interpretation of result)");
     }
     Serial.println("reply was:");
     Serial.println("==========");
@@ -73,3 +74,7 @@ bool DataLogger::sendDataToGoogleSpreadsheet(float temperature, float humidity)
 
     return true;
 } 
+
+float DataLogger::convertToAbsoluteHumidity(float relativeHumidity, float temperature) {
+    return (6.112 * std::pow(EULER, (17.67*temperature)/(temperature+243.5))*relativeHumidity*2.1674)/(273.15+temperature);
+}

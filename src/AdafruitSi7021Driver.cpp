@@ -70,7 +70,7 @@ bool AdafruitSi7021Driver::begin() {
  *  @brief  Reads the humidity value from Si7021 (No Master hold)
  *  @return Returns humidity as float value or NAN when there is error timeout
  */
-float AdafruitSi7021Driver::readHumidity() {
+float AdafruitSi7021Driver::readRelativeHumidity() {
   _wire->beginTransmission(_i2caddr);
 
   _wire->write(SI7021_MEASRH_NOHOLD_CMD);
