@@ -7,7 +7,7 @@ Boards used:
 * Adafruit Si7021
 * ESP32 TTGO T8 v1.7.1
 
-Good information about sensor (also check other subpages):
+Good information about sensor (also check other subpages):  
 https://learn.adafruit.com/adafruit-si7021-temperature-plus-humidity-sensor/overview
 
 How to use
