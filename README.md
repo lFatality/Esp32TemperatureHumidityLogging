@@ -44,7 +44,7 @@ Note: If you want to update the script, I always had to select a new version, ot
 Set up Environment.hpp
 ----------------------
 
-Take EnvironmentTemplate.hpp and rename it to Environment.hpp.  
+Take `EnvironmentTemplate.hpp` and rename it to `Environment.hpp`.  
 Fill in the missing values:  
 - wifi ssid
 - wifi password
@@ -54,6 +54,16 @@ That should be everything, have fun. :)
 
 <img src="ESP32_T8_1_7.jpg" alt="drawing"/>
 Image Source: https://github.com/LilyGO/TTGO-T8-ESP32
+
+Set up desired up- / down-time and sampling rate
+------------------------------------------------
+
+The board can be set into a deep sleep to save power.  
+In the `Parameters.hpp` file you can set up these three values:
+
+- Sampling Rate: How often to sample measurements when awake
+- Up time: For how long is the board awake between sleeping periods
+- Sleep time: For how long to sleep. No measurements will be done when sleeping but power is saved.
 
 What is humidity again exactly?
 ===============================
