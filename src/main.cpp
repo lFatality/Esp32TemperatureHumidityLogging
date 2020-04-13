@@ -37,7 +37,7 @@ void setup()
     Serial.println("Starting setup");
 
     // initialize temperature & humidity sensor
-    si7021Driver.begin();  // sensor
+    si7021Driver.begin(23, 18);  // sensor
 
     //connecting to the local wlan / internet
     while(!dataLogger.init()) {

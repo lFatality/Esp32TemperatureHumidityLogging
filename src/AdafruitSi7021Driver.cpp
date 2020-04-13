@@ -47,10 +47,12 @@ AdafruitSi7021Driver::AdafruitSi7021Driver(TwoWire *theWire) {
 /*!
  *  @brief  Sets up the HW by reseting It, reading serial number and reading
  * revision.
+ *  @param sdaPin The desired data pin of the i2c bus
+ *  @param sclPin The desired clock pin of the i2c bus
  *  @return Returns true if set up is successful.
  */
-bool AdafruitSi7021Driver::begin() {
-  _wire->begin();
+bool AdafruitSi7021Driver::begin(uint8_t sdaPin, uint8_t sclPin) {
+  _wire->begin(sdaPin, sclPin);
 
   _wire->beginTransmission(_i2caddr);
   if (_wire->endTransmission())

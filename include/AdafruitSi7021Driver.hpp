@@ -70,7 +70,7 @@ enum si_sensorType {
 class AdafruitSi7021Driver {
 public:
   AdafruitSi7021Driver(TwoWire *theWire = &Wire);
-  bool begin();
+  bool begin(uint8_t sdaPin, uint8_t sclPin);
 
   /**
    * Reads the temperature value measured by the sensor (°C).
