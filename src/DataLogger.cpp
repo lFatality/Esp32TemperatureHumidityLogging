@@ -1,9 +1,5 @@
 #include "DataLogger.hpp"
 
-DataLogger::DataLogger() {
-    
-}
-
 bool DataLogger::init() {
     Serial.print("connecting to ");
     Serial.println(ssid);
