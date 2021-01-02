@@ -4,7 +4,7 @@
 
 namespace env {
     namespace wifi {
-        const char* const ssid = "";
+        const char* const ssid = ""; // wlan name
         const char* const password = "";
     }    
 

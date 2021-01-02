@@ -58,6 +58,8 @@ bool DataLogger::sendDataToGoogleSpreadsheet(float temperature, float humidity)
         break;
     }
     }
+    //String test = client.readString();
+    //Serial.println(test);
     String line = client.readStringUntil('\n');
     if (line.startsWith("{\"state\":\"success\"")) {
         Serial.println("esp32/Arduino CI successfull!");
@@ -73,7 +75,7 @@ bool DataLogger::sendDataToGoogleSpreadsheet(float temperature, float humidity)
     client.stop();
 
     return true;
-} 
+}
 
 float DataLogger::convertToAbsoluteHumidity(float relativeHumidity, float temperature) {
     return (6.112 * std::pow(EULER, (17.67*temperature)/(temperature+243.5))*relativeHumidity*2.1674)/(273.15+temperature);

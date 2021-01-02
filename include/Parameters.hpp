@@ -27,7 +27,7 @@ namespace parameters {
      * Remember that you also sample at t=0. You set the desired upTime to 10 seconds.
      * You sample at t=0, t=5, and t=10 (you sample before checking for sleep), then you go to sleep.
      */
-    const int desiredUpTimeInSeconds = 10;
+    const int desiredUpTimeInSeconds = 0; //sample just once, then go to sleep again
 
     /**
      * Sleep time
@@ -36,5 +36,5 @@ namespace parameters {
      * This can be useful for power saving.
      * Set to 0 if you dont want to go to sleep.
      */
-    const int sleepTimeInSeconds = 60;
+    const int sleepTimeInSeconds = 3600; // 60s/min * 60min/h = 3600s/h
 }

@@ -25,7 +25,7 @@ function doGet(e) {
     result = 'No Parameters';
   }
   else {
-    var sheet_id = '1Vyy4qgzp645pBN_VU812eClJVZJIYqi_M7j1ywWp0Tw'; 		// Spreadsheet ID
+    var sheet_id = 'your_spreadsheet_id'; 		// Spreadsheet ID
     var sheet = SpreadsheetApp.openById(sheet_id).getActiveSheet();		// get Active sheet
     var newRow = sheet.getLastRow() + 1;						
     var rowData = [];

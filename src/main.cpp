@@ -1,6 +1,3 @@
-// spreadsheet: spreadsheet: https://docs.google.com/spreadsheets/d/1Vyy4qgzp645pBN_VU812eClJVZJIYqi_M7j1ywWp0Tw/edit#gid=0
-// execute google script: https://script.google.com/macros/s/AKfycbxh0KWfIYso5BDSDKgFchY8PHbHADLUEGQ_YH0rbknq3a9M5w/exec?temperature=20&humidity=48
-
 //-----------------------------------------------
 // Author: Trieu Le
 // Email: lethanhtrieuk36@gmail.com
@@ -50,7 +47,7 @@ void setup()
     Serial.println("Setup completed");
 
     // toggle LED shortly
-    LedController::blinkLed(ledEnum::green, 3, 50, 50);
+    // LedController::blinkLed(ledEnum::green, 3, 50, 50);
 }
 
 void loop() 
